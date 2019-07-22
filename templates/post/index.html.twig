@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Publicaciones{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                {% for post in posts %}
+                    <div class="col-md-7">
+                        <br><br>
+                        <div class="card" onclick="show({{ post.id }})">
+                            <div class="card-header">
+                                {{ post.title }}
+                                <div class="float-right">
+                                    {{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="card-image">
+                                    <img src="{{ asset('uploads/' ~ post.image) }}" alt="{{ post.title }}" class="card-img-bottom">
+                                </div>
+                                {{ post.description }}
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <script>
+        function show(id) {
+            window.location.href = `/post/${id}`
+        }
+    </script>
+{% endblock %}

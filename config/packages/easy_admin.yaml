@@ -1,0 +1,34 @@
+easy_admin:
+    site_name: 'BlogVegetariano'
+    design:
+        brand_color: 'green'
+
+    user:
+        display_name: true
+        display_avatar: false
+    entities:
+#        # List the entity class name you want to manage
+#        - App\Entity\Post
+#        - App\Entity\Comment
+#        - App\Entity\User
+        Post:
+            class: App\Entity\Post
+            label: 'Posts'
+            list:
+                title: 'Lista De %%entity_label%%'
+                search:
+                    fields: ['title']
+        Comment:
+            class: App\Entity\Comment
+            label: 'Comentarios'
+            list:
+                title: 'Lista De %%entity_label%%'
+                search:
+                    fields: ['comment']
+        User:
+            class: App\Entity\User
+            label: 'Usuarios'
+            list:
+                title: 'Lista De %%entity_label%%'
+                search:
+                    fields: ['email']
